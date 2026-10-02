@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>天鳳 段位ポイントシミュレーター</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>天鳳 段位ポイントシミュレーション</h2>
+
+<!-- タブ切替 -->
+<div class="tabs">
+  <button class="tab-button active" onclick="switchTab('3ma')">三麻</button>
+  <button class="tab-button" onclick="switchTab('4ma')">四麻</button>
+</div>
+
+<!-- 三麻設定 -->
+<div id="tab-3ma" class="tab-content active">
+  <h3>三麻：特上卓（4〜6段）</h3>
+  1着率: <input id="p1_tokujou_3" type="number" step="0.001" value="0.35"><br>
+  2着率: <input id="p2_tokujou_3" type="number" step="0.001" value="0.33"><br>
+  3着率: <input id="p3_tokujou_3" type="number" step="0.001" value="0.32"><br>
+
+  <h3>三麻：鳳凰卓（7段〜）</h3>
+  1着率: <input id="p1_houou_3" type="number" step="0.001" value="0.34"><br>
+  2着率: <input id="p2_houou_3" type="number" step="0.001" value="0.35"><br>
+  3着率: <input id="p3_houou_3" type="number" step="0.001" value="0.31"><br>
+</div>
+
+<!-- 四麻設定 -->
+<div id="tab-4ma" class="tab-content">
+  <h3>四麻：特上卓（4〜6段）</h3>
+  1着率: <input id="p1_tokujou_4" type="number" step="0.001" value="0.25"><br>
+  2着率: <input id="p2_tokujou_4" type="number" step="0.001" value="0.40"><br>
+  3着率: <input id="p3_tokujou_4" type="number" step="0.001" value="0.20"><br>
+  4着率: <input id="p4_tokujou_4" type="number" step="0.001" value="0.15"><br>
+
+  <h3>四麻：鳳凰卓（7段〜）</h3>
+  1着率: <input id="p1_houou_4" type="number" step="0.001" value="0.25"><br>
+  2着率: <input id="p2_houou_4" type="number" step="0.001" value="0.40"><br>
+  3着率: <input id="p3_houou_4" type="number" step="0.001" value="0.20"><br>
+  4着率: <input id="p4_houou_4" type="number" step="0.001" value="0.15"><br>
+</div>
+
+<h3>初期設定</h3>
+初期段位: <input id="initial_rank" type="number" value="7"><br>
+初期pt: <input id="initial_pt" type="number" value="1400"><br>
+
+<h3>目標設定</h3>
+目標段位: <input id="upper_rank" type="number" value="10"><br>
+目標pt: <input id="upper_pt" type="number" value="4000"><br>
+
+<h3>シミュレーション設定</h3>
+試行数: <input id="trials" type="number" value="10000"><br>
+最大半荘数: <input id="max_games" type="number" value="10000"><br>
+
+<button onclick="runSim()">シミュレーション開始</button>
+
+<h3>結果</h3>
+<pre id="result"></pre>
+
+<script src="script.js"></script>
+</body>
+</html>
