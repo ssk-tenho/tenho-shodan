@@ -41,20 +41,27 @@ function simulate_once(mode, initial_rank, initial_pt,
 
     for (let games = 1; games <= max_games; games++) {
 
-        let p1_local, p2_local, p3_local;
+        let p1_local, p2_local, p3_local, p4_local;
 
         if (rank <= 6) {
-            [p1_local, p2_local, p3_local] = p_tokujou;
+            [p1_local, p2_local, p3_local, p4_local] = p_tokujou;
         } else {
-            [p1_local, p2_local, p3_local] = p_houou;
+            [p1_local, p2_local, p3_local, p4_local] = p_houou;
         }
 
         const r = Math.random();
         const rules = rules_table[rank];
 
-        if (r < p1_local) pt += rules[0];
-        else if (r < p1_local + p2_local) pt += rules[1];
-        else pt += rules[2];
+        if (mode === "4ma") {
+            if (r < p1_local) pt += rules[0];
+            else if (r < p1_local + p2_local) pt += rules[1];
+            else if (r < p1_local + p2_local + p3_local) pt += rules[2];
+            else pt += rules[3];  // 4着
+        } else {
+            if (r < p1_local) pt += rules[0];
+            else if (r < p1_local + p2_local) pt += rules[1];
+            else pt += rules[2];
+        }
 
         if (pt >= rules[4] && rank < 10) {
             rank++;
@@ -98,23 +105,27 @@ function runSim() {
         p_tokujou = [
             Number(document.getElementById("p1_tokujou_3").value),
             Number(document.getElementById("p2_tokujou_3").value),
-            Number(document.getElementById("p3_tokujou_3").value)
+            Number(document.getElementById("p3_tokujou_3").value),
+            0
         ];
         p_houou = [
             Number(document.getElementById("p1_houou_3").value),
             Number(document.getElementById("p2_houou_3").value),
-            Number(document.getElementById("p3_houou_3").value)
+            Number(document.getElementById("p3_houou_3").value),
+            0
         ];
     } else {
         p_tokujou = [
             Number(document.getElementById("p1_tokujou_4").value),
             Number(document.getElementById("p2_tokujou_4").value),
-            Number(document.getElementById("p3_tokujou_4").value)
+            Number(document.getElementById("p3_tokujou_4").value),
+            Number(document.getElementById("p4_tokujou_4").value)
         ];
         p_houou = [
             Number(document.getElementById("p1_houou_4").value),
             Number(document.getElementById("p2_houou_4").value),
-            Number(document.getElementById("p3_houou_4").value)
+            Number(document.getElementById("p3_houou_4").value),
+            Number(document.getElementById("p4_houou_4").value)
         ];
     }
 
