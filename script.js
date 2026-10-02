@@ -157,6 +157,3 @@ function runSim() {
 中央値: ${med}`;
 }
 
-平均半荘数: ${avg}
-中央値: ${med}`;
-}
